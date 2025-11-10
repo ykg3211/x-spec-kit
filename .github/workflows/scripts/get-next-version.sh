@@ -16,6 +16,7 @@ MINOR=${VERSION_PARTS[1]:-0}
 PATCH=${VERSION_PARTS[2]:-0}
 
 # Increment patch version
+PATCH=$((PATCH + 1))
 NEW_VERSION="v$MAJOR.$MINOR.$PATCH"
 
 echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
