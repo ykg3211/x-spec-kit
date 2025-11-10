@@ -137,4 +137,4 @@ Every task MUST strictly follow this format:
     - ✅ CORRECT: `Phase 1`
     - ✅ CORRECT: `Phase 4`
     - ❌ WRONG: `Phase 1.5`
-    - ❌ WRONG: `Phase 4.2`
+    - ❌ WRONG: `Phase 4.4`
