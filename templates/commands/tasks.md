@@ -130,3 +130,11 @@ Every task MUST strictly follow this format:
 - **Phase 4**: 组件/模块/hooks 的使用和封装部分（可以不止一个 phase）
 - **Phase 5**: 按照 user story 进行集成（可以不止一个 phase）
 - **Final Phase**: Review & Lint
+
+## Rules
+- 只允许出现整数倍的 phase，不允许出现小数倍的 phase。
+  - 如：
+    - ✅ CORRECT: `Phase 1`
+    - ✅ CORRECT: `Phase 4`
+    - ❌ WRONG: `Phase 1.5`
+    - ❌ WRONG: `Phase 4.2`
