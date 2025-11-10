@@ -36,7 +36,7 @@ description: "Task list template for feature implementation"
 - [ ] T2.4 {task description}
 - [ ] T2.5 {task description}
 
-**Extra content start: 如果需要手动测试，则需要在此阶段加上以下相关内容**
+**Extra content start: 如果需要人工测试确认，则需要在此阶段加上以下相关内容**
 
 ### Manual Testing Path - Phase 2
 
@@ -62,7 +62,7 @@ description: "Task list template for feature implementation"
 - [ ] T3.5 [US1] Add validation and error handling
 - [ ] T3.6 [US1] Add logging for user story 1 operations
 
-**Extra content start: 如果需要手动测试，则需要在此阶段加上以下相关内容**
+**Extra content start: 如果需要人工测试确认，则需要在此阶段加上以下相关内容**
 
 ### Manual Testing Path - Phase 2
 
@@ -90,7 +90,7 @@ description: "Task list template for feature implementation"
 - [ ] T4.5 [US2] Implement [endpoint/feature] in src/[location]/[file].py
 - [ ] T4.6 [US2] Integrate with User Story 1 components (if needed)
 
-**Extra content start: 如果需要手动测试，则需要在此阶段加上以下相关内容**
+**Extra content start: 如果需要人工测试确认，则需要在此阶段加上以下相关内容**
 
 ### Manual Testing Path - Phase 2
 

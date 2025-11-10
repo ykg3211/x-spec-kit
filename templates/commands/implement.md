@@ -100,29 +100,21 @@ You **MUST** consider the user input before proceeding (if not empty).
    - **Kubernetes/k8s**: `*.secret.yaml`, `secrets/`, `.kube/`, `kubeconfig*`, `*.key`, `*.crt`
 
 5. Parse tasks.md structure and extract:
-   - **Task phases**: Setup, Tests, Core, Integration, Polish
-   - **Task dependencies**: Sequential vs parallel execution rules
-   - **Task details**: ID, description, file paths, parallel markers [P]
+   - **Task phases**: i18n, api, api mock server, 组件/模块/hooks 的使用和封装部分（可以不止一个）, 按照 user story 进行集成, Review & Lint
    - **Execution flow**: Order and dependency requirements
 
 6. Execute implementation following the task plan:
    - **Phase-by-phase execution**: Complete each phase before moving to the next
-   - **Respect dependencies**: Run sequential tasks in order, parallel tasks [P] can run together  
-   - **Follow TDD approach**: Execute test tasks before their corresponding implementation tasks
+   - **Phase manual confirmation**: 如果该 phase 最后需要人工测试确认，那么在该 phase 结束后，需要询问用户是否确认该 phase 完成。在人工确认之前，不允许继续执行下一个 phase！
    - **File-based coordination**: Tasks affecting the same files must run sequentially
    - **Validation checkpoints**: Verify each phase completion before proceeding
 
 7. Implementation execution rules:
-   - **Setup first**: Initialize project structure, dependencies, configuration
-   - **Tests before code**: If you need to write tests for contracts, entities, and integration scenarios
    - **Core development**: Implement models, services, CLI commands, endpoints
-   - **Integration work**: Database connections, middleware, logging, external services
-   - **Polish and validation**: Unit tests, performance optimization, documentation
+   - **Integration work**: 使用已经开发完成的 api/组件/hooks/模块 按照 user story 进行集成
 
 8. Progress tracking and error handling:
    - Report progress after each completed task
-   - Halt execution if any non-parallel task fails
-   - For parallel tasks [P], continue with successful tasks, report failed ones
    - Provide clear error messages with context for debugging
    - Suggest next steps if implementation cannot proceed
    - **IMPORTANT** For completed tasks, make sure to mark the task off as [X] in the tasks file.
