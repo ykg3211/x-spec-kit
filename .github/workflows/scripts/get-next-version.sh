@@ -2,13 +2,12 @@
 set -euo pipefail
 
 # get-next-version.sh
-# Calculate the next version based on the latest git tag, create the tag, and output GitHub Actions variables
+# Calculate the next version based on the latest git tag and output GitHub Actions variables
 # Usage: get-next-version.sh
 
 # Get the latest tag, or use v0.0.0 if no tags exist
 LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
 echo "latest_tag=$LATEST_TAG" >> $GITHUB_OUTPUT
-echo "Latest tag: $LATEST_TAG"
 
 # Extract version number and increment
 VERSION=$(echo $LATEST_TAG | sed 's/v//')
@@ -23,9 +22,3 @@ NEW_VERSION="v$MAJOR.$MINOR.$PATCH"
 
 echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
 echo "New version will be: $NEW_VERSION"
-
-# Create and push the new tag
-echo "Creating tag $NEW_VERSION..."
-git tag -a "$NEW_VERSION" -m "Release $NEW_VERSION"
-git push origin "$NEW_VERSION"
-echo "Tag $NEW_VERSION created and pushed successfully"
