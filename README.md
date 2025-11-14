@@ -4,6 +4,14 @@ forked from [github/spec-kit](https://github.com/github/spec-kit)
 
 这是一个服务于 cozeloop 开源仓库的基于 spec-kit 工具。
 
+### 使用说明
+在完成 spec-kit 工具的安装后，您可以开始您的 cozeloop SDD 开发旅程～
+
+1. 相较于 spec-kit， 我们提供了针对 cozeloop 仓库的 constitution 模版，您可以直接使用而不必要使用 command 来生成～
+2. 在需求实现过程中，可能会需要您对中间 phase 产物进行验收，以免后续集成之后造成方向性的偏差。
+   1. 比如在实现组件之后，可能会要求您在 ai 给定的 preview page 中进行组件验收
+   2. 在实现某个 user story 之后，可能会要求您进行该 user story 的验收，以确保实现的功能符合需求。
+
 
 ## ⚡ 快速开始
 
