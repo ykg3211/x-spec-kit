@@ -18,79 +18,81 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Outline
 
-1. **Setup**: Run `{SCRIPT}` from repo root and parse JSON for FEATURE_SPEC, IMPL_PLAN, SPECS_DIR, BRANCH. For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot").
+1. **设置**：从仓库根目录运行 `{SCRIPT}` 并解析 JSON 以获取 FEATURE_SPEC、IMPL_PLAN、SPECS_DIR、BRANCH。对于参数中的单引号，如 "I'm Groot"，请使用转义语法：例如 'I'\''m Groot'（如果可能，也可以使用双引号："I'm Groot"）。
 
-2. **Load context**: Read FEATURE_SPEC and `/memory/constitution.md`. Load IMPL_PLAN template (already copied).
+2. **加载上下文**：读取 FEATURE_SPEC 和 `/memory/constitution.md`。加载 IMPL_PLAN 模板（已复制）。
 
-3. **Execute plan workflow**: Follow the structure in IMPL_PLAN template to:
-   - Fill Technical Context (mark unknowns as "NEEDS CLARIFICATION")
-   - Fill Constitution Check section from constitution
-   - Evaluate gates (ERROR if violations unjustified)
-   - Phase 0: Resolve all NEEDS CLARIFICATION and document decisions in Technical Analysis section
-   - Phase 1: Design data model and API contracts inline in plan.md sections
-   - Phase 1: Update agent context by running the agent script
-   - Re-evaluate Constitution Check post-design
+3. **执行计划工作流**：遵循 IMPL_PLAN 模板中的结构来：
+   - 填写技术背景（将未知项标记为“需要澄清”）
+   - 从章程中填写章程检查部分
+   - 评估关卡（如果违规行为不合理，则报错）
+   - 阶段 0：解决所有“需要澄清”项，并在技术分析部分记录决策
+   - 阶段 1：完成在 plan.md 的相应部分设计
+   - 阶段 1：通过运行代理脚本更新代理上下文
+   - 设计后重新评估章程检查
 
-4. **Stop and report**: Command ends after Phase 1 planning. Report branch, IMPL_PLAN path. All design details are documented inline in plan.md.
+4. **停止并报告**：命令在阶段 1 规划后结束。报告分支和 IMPL_PLAN 路径。所有设计细节都内联记录在 plan.md 中。
 
-## Phases
+## 阶段
 
-### Phase 0: Technical Analysis & Decisions
+### 阶段 0：技术分析与决策
 
-1. **Extract unknowns from Technical Context** above:
-   - For each NEEDS CLARIFICATION → research and make decision
-   - For each dependency → identify best practices
-   - For each integration → document patterns
+1. **从上述技术背景中提取未知项**：
+   - 对于每个“需要澄清”项 → 进行研究并做出决策
+   - 对于每个依赖项 → 确定最佳实践
+   - 对于每个集成 → 记录模式
 
-2. **Research and resolve unknowns**:
+2. **研究并解决未知项**：
 
    ```text
-   For each unknown in Technical Context:
-     Task: "Research {unknown} for {feature context}"
-   For each technology choice:
-     Task: "Find best practices for {tech} in {domain}"
+   对于技术背景中的每个未知项：
+     任务：“为 {功能背景} 研究 {未知项}”
+   对于每个技术选择：
+     任务：“寻找 {技术} 在 {领域} 中的最佳实践”
    ```
 
-3. **Document findings directly in plan.md**:
-   - Add to "Technical Analysis" section
-   - Document each decision with:
-     - Decision: [what was chosen]
-     - Rationale: [why chosen]
-     - Alternatives considered: [what else evaluated]
+3. **直接在 plan.md 中记录发现**：
+   - 添加到“技术分析”部分
+   - 为每个决策记录以下内容：
+     - 决策：[选择了什么]
+     - 理由：[为什么选择]
+     - 考虑过的替代方案：[评估了哪些其他方案]
 
-**Output**: All technical decisions documented inline in plan.md
+**输出**：所有技术决策都内联记录在 plan.md 中
 
-### Phase 1: Design & Architecture
+### 阶段 1：设计与架构
 
-**Prerequisites:** All technical decisions documented in Technical Analysis section
+**先决条件**：所有技术决策都已记录在技术分析部分
 
-1. **Extract entities from feature spec** → Document in plan.md:
-   - Entity name, fields, relationships
-   - Validation rules from requirements
-   - State transitions if applicable
-   - Add to appropriate sections in plan.md
+1. **从功能规格中提取 i18n 文案** → 在 plan.md 中记录：
+   - 所有提及的 i18n 文案
+   - 按照需求类型寻找在修改的文件路径
+   - 修改完成之后需要同步更新相应的 type 文件
 
-2. **Generate API contracts** from functional requirements → Document in plan.md:
-   - For each user action → endpoint
-   - Use standard REST/GraphQL patterns
-   - Document API interfaces and type definitions
-   - Include OpenAPI/GraphQL schema inline if needed
+2. **通过命令更新 api schema 并且校验，并且需要有一份 mock server 用于前端前置开发** → 在 plan.md 中记录：
+   - 需要检验生成的定义是否符合 spec 或者 api doc 中的要求
+   - 必要时，需要实现 mock server 用于前端前置开发。因为后端实际接口可能还未完成。
 
-3. **Document integration scenarios** → Add to plan.md:
-   - Test scenarios from user stories
-   - Integration paths and dependencies
-   - End-to-end test cases
+3. **组件拆分 & 实现** → 在 plan.md 中记录：
+   - 组件拆分策略
+   - 每个组件的实现细节
+   - 组件之间的交互
+   - 提供一个 components-preview page 用于展示组件的交互和功能
 
-4. **Agent context update**:
-   - Run `{AGENT_SCRIPT}`
-   - These scripts detect which AI agent is in use
-   - Update the appropriate agent-specific context file
-   - Add only new technology from current plan
-   - Preserve manual additions between markers
+3. **记录集成场景** → 添加到 plan.md：
+   - 来自用户故事的测试场景
+   - 集成路径和依赖关系
 
-**Output**: Complete plan.md with all design details (data model, API contracts, test scenarios) documented inline
+4. **代理上下文更新**：
+   - 运行 `{AGENT_SCRIPT}`
+   - 这些脚本会检测正在使用的 AI 代理
+   - 更新相应的特定于代理的上下文文件
+   - 仅添加当前计划中的新技术
+   - 保留标记之间的手动添加内容
 
-## Key rules
+**输出**：完整的 plan.md，其中包含所有设计细节（数据模型、API 合约、测试场景）的内联记录
 
-- Use absolute paths
-- ERROR on gate failures or unresolved clarifications
+## 关键规则
+
+- 使用绝对路径
+- 在关卡失败或有未解决的澄清项时报错

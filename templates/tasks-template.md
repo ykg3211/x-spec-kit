@@ -17,24 +17,22 @@ description: "Task list template for feature implementation"
 - **[Story]**: Which user story this task belongs to (e.g., US1, US2, US3)
 - Include exact file paths in descriptions
 
-## Phase 1: (phase title)
+## Phase 1: i18n 国际化文案
 
-**Goal**: {阶段一句话描述}
+**Goal**: 添加所有 Code 评估器相关的中英文文案,支持国际化
 
-- [ ] T1.1 {task description}
-- [ ] T1.2 {task description}
+- [ ] T001 Add Chinese i18n keys to xxxxx
+- [ ] T002 Add English i18n keys to xxxxx
+- [ ] T003 Update i18n type definitions if needed in xxxxxx
 
 ---
 
-## Phase 2: (phase title)
+## Phase 2: API 类型定义
 
-**Goal**: {阶段一句话描述}
+**Goal**: 更新前端的 TypeScript 类型定义
 
-- [ ] T2.1 {task description}
-- [ ] T2.2 {task description}
-- [ ] T2.3 {task description}
-- [ ] T2.4 {task description}
-- [ ] T2.5 {task description}
+- [ ] T004 在 @cozeloop/api-schema 目录下运行 npm run update 更新 api schema
+- [ ] T005 检索所有 spec 中的 api 是否已经存在。不存在则需要人工确认。
 
 **Extra content start: 如果需要人工测试确认，则需要在此阶段加上以下相关内容**
 

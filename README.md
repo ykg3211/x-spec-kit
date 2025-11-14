@@ -1,53 +1,58 @@
 forked from [github/spec-kit](https://github.com/github/spec-kit)
 
-## ⚡ Get Started
+## 项目介绍
 
-### 1. Install Specify CLI
+这是一个服务于 cozeloop 开源仓库的基于 spec-kit 工具。
 
-Choose your preferred installation method:
 
-#### Option 1: Persistent Installation (Recommended)
+## ⚡ 快速开始
 
-Install once and use everywhere:
+### 1. 安装 Specify CLI
+
+选择您偏好的安装方式：
+
+#### 选项 1：持久化安装（推荐）
+
+一次安装，随处使用：
 
 ```bash
 uv tool install specify-cli --from git+https://github.com/ykg3211/x-spec-kit.git
 ```
 
-Then use the tool directly:
+然后直接使用该工具：
 
 ```bash
-specify init <PROJECT_NAME>
+specify init <项目名称>
 specify check
 ```
 
-To upgrade specify run:
+要升级 specify，请运行：
 
 ```bash
 uv tool install specify-cli --force --from git+https://github.com/ykg3211/x-spec-kit.git
 ```
 
-#### Option 2: One-time Usage
+#### 选项 2：一次性使用
 
-Run directly without installing:
+无需安装，直接运行：
 
 ```bash
-uvx --from git+https://github.com/ykg3211/x-spec-kit.git specify init <PROJECT_NAME>
+uvx --from git+https://github.com/ykg3211/x-spec-kit.git specify init <项目名称>
 ```
 
-**Benefits of persistent installation:**
+**持久化安装的优势：**
 
-- Tool stays installed and available in PATH
-- No need to create shell aliases
-- Better tool management with `uv tool list`, `uv tool upgrade`, `uv tool uninstall`
-- Cleaner shell configuration
+- 工具保持安装状态并存在于 PATH 中
+- 无需创建 shell 别名
+- 通过 `uv tool list`、`uv tool upgrade`、`uv tool uninstall` 更好地管理工具
+- 更简洁的 shell 配置
 
-## Init Project
+## 初始化项目
 
-To initialize a new Specify project, run:
+要初始化一个新的 Specify 项目，请运行：
 
 ```bash
-specify init <PROJECT_NAME>
+specify init <项目名称>
 ```
 
 如果需要使用基础模板，添加 `--base` 参数：
@@ -55,13 +60,5 @@ specify init <PROJECT_NAME>
 如果不带则在本仓库初始化项目
 
 ```bash
-specify init <PROJECT_NAME> --base
+specify init <项目名称> --base
 ```
-
-# 开发流程
-
-- clone 该仓库修改相应的 prompt 之后 push 到 main 分支
-
-- push 到 main 会自动触发 workflow 执行
-
-- 随后重新使用 `specify init <PROJECT_NAME>` 初始化项目即可生效

@@ -39,6 +39,8 @@ You **MUST** consider the user input before proceeding (if not empty).
      - 如果 spec 中包含 i18n 相关内容，则单独作为一个任务作为阶段 1.
    - Phase 2: api 部分
      - 如果 spec 中包含 api 相关内容，则单独作为一个任务作为阶段 2. （如没 i18n 则为阶段 1.）
+     - 需要通过 bash 命令遵循 constitution 的方式来生成一次 api 相关的代码。
+     - tasks 可以参考 tasks-template.md 中的 Phase 2 部分。
    - Phase 3: api mock server 部分
      - 如果包含 api 部分变更， 则必须需要包含该 phase。专门用于后端服务未实现之前，前端可以先基于 mock server 进行开发。
      - 需要有人工测试确认阶段，并且输出一份支持的 mock 的 api 文档，输入输出事例等
@@ -49,8 +51,7 @@ You **MUST** consider the user input before proceeding (if not empty).
      - 如果有多个 user sotry 中的组件/模块/hooks，都需要前置专门先实现。
      - 如果其中有组件过于复杂，可以单独作为一个 phase 来拆分实现。
      - 最后需要有人工测试确认阶段，将这次任务变更的组件/模块/hooks 单独整理一份文档供人检查。
-       - 如果是独立组件，则需要提供一个 story book 或者新增一个 url 专门渲染组件，供人方便检查试用
-         - 如果项目本身没有 story book，则可以使用新增一个 url 来渲染组件。
+       - 如果是独立组件，则需要集成到 components-preview page 中进行渲染
    - Phase 5: 集成阶段（可以不止一个 phase）
      - 根据 user sotry 来进行拆分阶段，每个 user story 单独作为一个 phase。
      - 在该阶段，只能使用前面已经完成的组件/模块/hooks/api/i18n 来进行业务流串联。
@@ -71,7 +72,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 **Tests are OPTIONAL**: 在实现 组件/模块/hooks/按照userstory集成 等部分时，需要在 phase 维度的最末尾设置人工卡点，这里会要求人工测试确认是否符合预期。只有人工测试确认之后才可以执行下一个 phase
 
-**额外的测试环境 tasks** 在 组件/模块/hooks 的 phase 开发末尾，需要专门注意提供一个可以供人检查的测试环境。包括但不限于新增一个 url path / storybook 专门用于渲染组件/模块/hooks。
+**额外的测试环境 tasks** 在 组件/模块/hooks 的 phase 开发末尾，需要专门注意提供一个可以供人检查的测试环境。包括但不限于新增一个 url path / components-preview page 专门用于渲染组件/模块/hooks。
 
 ### Checklist Format (REQUIRED)
 
@@ -129,6 +130,10 @@ Every task MUST strictly follow this format:
 - **Phase 3**: api mock server 部分 （如有 api 部分）
 - **Phase 4**: 组件/模块/hooks 的使用和封装部分（可以不止一个 phase）
 - **Phase 5**: 按照 user story 进行集成（可以不止一个 phase）
+  - 如果是 user story 区分的 phase，每个 user story 单独作为一个 phase。
+  - 并且 phase title 中需要标记具体的 user story 编号。
+  - eg： `Phase 5: [US1] 配置和调试 Code 评估器执行函数`
+  - eg： `Phase 7: [US2] 提交 Code 评估器并通过静态代码检查`
 - **Final Phase**: Review & Lint
 
 ## Rules
@@ -140,3 +145,4 @@ Every task MUST strictly follow this format:
     - ❌ WRONG: `Phase 4.1`
 - 在开始生成 phase 的时候，需要先确定好该 phase 最后是否需要人工测试确认。如果需要的话在末尾加上人工测试确认的相关内容！
   - 一般组件开发，user story 实现等都需要人工测试确认
+- 全部使用 中文 进行编排，不允许使用英文！
